@@ -1,0 +1,21 @@
+Set(
+    currentUserProfile,
+    Office365Users.UserProfileV2(User().Email)
+);
+UpdateContext({varNUID: currentUserProfile.mailNickname});
+UpdateContext({varFirstName: currentUserProfile.givenName});
+UpdateContext({varLastName: currentUserProfile.surname});
+UpdateContext({varEmail: currentUserProfile.mail});
+UpdateContext({varPhone: First(currentUserProfile.businessPhones).Value});
+UpdateContext({varDepartment: currentUserProfile.department});
+
+Set(
+    myManager,
+    Office365Users.Manager(User().Email)
+);
+UpdateContext({varNUIDManager: myManager.MailNickname});
+UpdateContext({varFirstNameManager: myManager.GivenName});
+UpdateContext({varLastNameManager: myManager.Surname});
+UpdateContext({varEmailManager: myManager.Mail});
+UpdateContext({varPhoneManager: myManager.TelephoneNumber});
+UpdateContext({varDepartmentManager: myManager.Department});
